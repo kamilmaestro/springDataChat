@@ -1,4 +1,4 @@
 package pl.kamilmarnik.springdatachat.domain.model;
 
-public interface Post {
+public interface Post{
 }

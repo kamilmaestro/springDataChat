@@ -1,21 +1,21 @@
 package pl.kamilmarnik.springdatachat.domain.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import org.hibernate.annotations.Immutable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-@Data
+@Table(name = "User")
+@Data @NoArgsConstructor
 public final class UserDTO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private final @NonNull String login;
+    private @NonNull @Immutable String login;
     private @NonNull String password;
 }
