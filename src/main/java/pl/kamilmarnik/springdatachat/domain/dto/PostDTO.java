@@ -1,8 +1,7 @@
 package pl.kamilmarnik.springdatachat.domain.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NonNull;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,18 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
-public class PostDTO {
+@Data
+public final class PostDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String content;
-    private String date;
-
-    public PostDTO(String content, String date) {
-        this.content = content;
-        this.date = date;
-    }
+    private @NonNull String content;
+    private @NonNull String date;
+    private @NonNull String userLogin;
 }
