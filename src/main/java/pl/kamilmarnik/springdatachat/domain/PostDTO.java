@@ -1,4 +1,4 @@
-package pl.kamilmarnik.springdatachat.domain.dto;
+package pl.kamilmarnik.springdatachat.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,14 +8,15 @@ import org.hibernate.annotations.Immutable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Post")
 @Data @NoArgsConstructor
-public final class UserDTO {
+public final class PostDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private @NonNull @Immutable String login;
-    private @NonNull String password;
+    private @NonNull String content;
+    private @NonNull String date;
+    private @NonNull @Immutable String userLogin;
 }
