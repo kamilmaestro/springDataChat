@@ -3,12 +3,11 @@ package pl.kamilmarnik.springdatachat.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import org.hibernate.annotations.Immutable;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Post")
+@Table(name = "posts")
 @Data @NoArgsConstructor
 public final class PostDTO {
 
@@ -18,5 +17,5 @@ public final class PostDTO {
 
     private @NonNull String content;
     private @NonNull String date;
-    private @NonNull @Immutable String userLogin;
+    private @NonNull String userLogin;
 }
