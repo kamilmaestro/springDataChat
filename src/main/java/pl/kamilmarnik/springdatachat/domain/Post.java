@@ -2,20 +2,24 @@ package pl.kamilmarnik.springdatachat.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "posts")
 @Data @NoArgsConstructor
-public final class PostDTO {
+public final class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private @NonNull String content;
-    private @NonNull String date;
-    private @NonNull String userLogin;
+    private @NotNull String content;
+    private @NotNull String date;
+    private @NotNull String userLogin;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }
