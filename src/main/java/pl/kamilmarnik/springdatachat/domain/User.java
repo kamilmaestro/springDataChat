@@ -17,13 +17,7 @@ public class User {
     private Long id;
 
     private @NotNull String login;
-    private @NotNull String password;
 
     @OneToMany(mappedBy = "user")
     private Set<Post> posts;
-
-    public User(String login, String password){
-        this.login = login;
-        this.password = password;
-    }
 }
