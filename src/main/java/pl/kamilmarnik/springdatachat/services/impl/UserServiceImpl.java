@@ -1,4 +1,8 @@
 package pl.kamilmarnik.springdatachat.services.impl;
 
-public class UserServiceImpl {
+import org.springframework.stereotype.Service;
+import pl.kamilmarnik.springdatachat.services.UserService;
+
+@Service
+public class UserServiceImpl implements UserService {
 }
