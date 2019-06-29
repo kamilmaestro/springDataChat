@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(posts)}">
+        <h2>Post List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>Date</th>
+                <th>User</th>
+            </tr>
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.id}">Post Id</td>
+                <td th:text="${post.content}">Content</td>
+                <td th:text="${post.date}">Date</td>
+                <td th:text="${post.userLogin}">User</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

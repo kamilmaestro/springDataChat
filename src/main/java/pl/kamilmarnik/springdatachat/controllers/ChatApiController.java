@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.kamilmarnik.springdatachat.domain.User;
+import pl.kamilmarnik.springdatachat.services.PostService;
 import pl.kamilmarnik.springdatachat.services.UserService;
 
 import javax.validation.Valid;
@@ -16,13 +17,24 @@ import javax.validation.Valid;
 @RequestMapping("/chat")
 public class ChatApiController {
     private UserService userService;
+    private PostService postService;
 
     @Autowired
-    public void setUserService(UserService userService){
+    public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
-    @RequestMapping("/")
+    @Autowired
+    public void setPostService(PostService postService) {
+        this.postService = postService;
+    }
+
+    @RequestMapping("")
+    public String redirToLogin(){
+        return "redirect:/chat/login";
+    }
+
+    @RequestMapping("/login")
     public String newUser(Model model){
         model.addAttribute("user", new User());
         return "login";
@@ -33,8 +45,14 @@ public class ChatApiController {
         if(bindingResult.hasErrors()){
             return "login";
         }
-        User savedUser = userService.saveOrUpdateUser(user);
+        userService.saveOrUpdateUser(user);
 
-        return "redirect:/posts/list";
+        return "redirect:/chat/posts";
+    }
+
+    @RequestMapping(value = "/posts", method = RequestMethod.GET)
+    public String getPosts(Model model){
+        model.addAttribute("posts", postService.getPosts());
+        return "posts";
     }
 }
