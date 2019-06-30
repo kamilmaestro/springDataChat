@@ -1,6 +1,5 @@
 package pl.kamilmarnik.springdatachat.controllers;
 
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
