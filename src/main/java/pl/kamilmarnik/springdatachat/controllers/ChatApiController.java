@@ -81,10 +81,17 @@ public class ChatApiController {
         return "redirect:/chat/posts";
     }
 
-    @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/post/{id}")
     public String showPost(@PathVariable Long id, Model model) {
         model.addAttribute("post", postService.getPostById(id));
 
         return "showpost";
+    }
+
+    @RequestMapping(value = "/post/edit/{id}")
+    public String editPost(@PathVariable Long id, Model model){
+        model.addAttribute("post", postService.getPostById(id));
+
+        return "post";
     }
 }

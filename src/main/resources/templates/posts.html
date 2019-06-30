@@ -22,12 +22,14 @@
                 <th>Date</th>
                 <th>User</th>
                 <th>View</th>
+                <th>Edit</th>
             </tr>
             <tr th:each="post : ${posts}">
                 <td th:text="${post.content}">Content</td>
                 <td th:text="${post.date}">Date</td>
                 <td th:text="${post.userLogin}">User</td>
                 <td><a th:href="${ '/chat/post/' + post.id}">View</a></td>
+                <td><a th:href="${ '/chat/post/edit/' + post.id}">Edit</a></td>
             </tr>
         </table>
 
