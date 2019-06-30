@@ -5,5 +5,7 @@ import pl.kamilmarnik.springdatachat.domain.Post;
 import java.util.List;
 
 public interface PostService {
-    public List<Post> getPosts();
+    List<Post> getPosts();
+    Post saveOrUpdatePost(Post post);
+    String getDate();
 }

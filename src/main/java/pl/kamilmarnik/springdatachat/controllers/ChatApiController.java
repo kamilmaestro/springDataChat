@@ -19,6 +19,7 @@ import javax.validation.Valid;
 public class ChatApiController {
     private UserService userService;
     private PostService postService;
+    private User currentUser;
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -41,12 +42,13 @@ public class ChatApiController {
         return "login";
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/save", method = RequestMethod.POST)
     public String saveOrUpdateUser(@Valid User user, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "login";
         }
         userService.saveOrUpdateUser(user);
+        currentUser = user;
 
         return "redirect:/chat/posts";
     }
@@ -60,6 +62,20 @@ public class ChatApiController {
     @RequestMapping(value = "/post/new")
     public String newPost(Model model) {
         model.addAttribute("post", new Post());
+
         return "post";
+    }
+
+    @RequestMapping(value = "/post/save", method = RequestMethod.POST)
+    public String savePost(@Valid Post post, BindingResult bindingResult){
+        if(bindingResult.hasErrors()) {
+            return "post";
+        }
+        post.setDate(postService.getDate());
+        post.setUserLogin(currentUser.getLogin());
+        post.setUser(currentUser);
+        postService.saveOrUpdatePost(post);
+
+        return "redirect:/chat/posts";
     }
 }

@@ -22,7 +22,7 @@
 
     <h2>Create a new post</h2>
     <div>
-        <form class="form-horizontal" th:object="${post}" th:action="@{/post/save}" method="post">
+        <form class="form-horizontal" th:object="${post}" th:action="@{/chat/post/save}" method="post">
 
             <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
                 <p th:text="#{form.hasErrors}">Error Message</p>
@@ -37,13 +37,13 @@
 
                     <span class="help-block">
                        <ul>
-                           <li th:each="err : ${#fields.errors('post')}" th:text="${err}" />
+                           <li th:each="err : ${#fields.errors('content')}" th:text="${err}" />
                        </ul>
                     </span>
                 </div>
             </div>
             <div class="row">
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default">Send</button>
             </div>
         </form>
     </div>

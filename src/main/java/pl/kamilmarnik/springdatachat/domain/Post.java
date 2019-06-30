@@ -16,8 +16,8 @@ public class Post {
     private Long id;
 
     private @NotNull String content;
-    private @NotNull String date;
-    private @NotNull String userLogin;
+    private String date;
+    private String userLogin;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
