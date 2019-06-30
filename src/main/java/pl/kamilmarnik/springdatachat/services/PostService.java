@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface PostService {
     List<Post> getPosts();
-    Post saveOrUpdatePost(Post post);
+    Post savePost(Post post);
     String getDate();
 }

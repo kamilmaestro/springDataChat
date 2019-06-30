@@ -47,7 +47,7 @@ public class ChatApiController {
         if(bindingResult.hasErrors()){
             return "login";
         }
-        userService.saveOrUpdateUser(user);
+        userService.saveUser(user);
         currentUser = user;
 
         return "redirect:/chat/posts";
@@ -74,7 +74,7 @@ public class ChatApiController {
         post.setDate(postService.getDate());
         post.setUserLogin(currentUser.getLogin());
         post.setUser(currentUser);
-        postService.saveOrUpdatePost(post);
+        postService.savePost(post);
 
         return "redirect:/chat/posts";
     }

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "posts")
@@ -15,8 +16,12 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private @NotNull String content;
+    @NotNull
+    private String content;
+
     private String date;
+
+    @Size(min = User.MIN_LOG_LEN, max = User.MAX_LOG_LEN)
     private String userLogin;
 
     @ManyToOne
