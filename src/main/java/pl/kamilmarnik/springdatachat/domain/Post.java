@@ -11,12 +11,14 @@ import javax.validation.constraints.Size;
 @Table(name = "posts")
 @Data @NoArgsConstructor
 public class Post {
+    public static final int MAX_CONTENT_LEN = 75;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
+    @Size(max = MAX_CONTENT_LEN)
     private String content;
 
     private String date;

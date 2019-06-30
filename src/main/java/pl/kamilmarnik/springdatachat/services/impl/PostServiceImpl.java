@@ -8,7 +8,6 @@ import pl.kamilmarnik.springdatachat.services.PostService;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -20,7 +19,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> getPosts() {
+    public Iterable<Post> getPosts() {
         return postRepository.findAll();
     }
 
@@ -34,5 +33,10 @@ public class PostServiceImpl implements PostService {
     public String getDate() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         return simpleDateFormat.format(Calendar.getInstance().getTime());
+    }
+
+    @Override
+    public Post getPostById(Long id) {
+        return postRepository.findById(id).orElse(null);
     }
 }

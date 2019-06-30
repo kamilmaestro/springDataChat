@@ -12,8 +12,8 @@ import java.util.Set;
 @Table(name = "users")
 @Data @NoArgsConstructor
 public class User {
-    protected static final int MIN_LOG_LEN = 5;
-    protected static final int MAX_LOG_LEN = 25;
+    public static final int MIN_LOG_LEN = 5;
+    public static final int MAX_LOG_LEN = 25;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
