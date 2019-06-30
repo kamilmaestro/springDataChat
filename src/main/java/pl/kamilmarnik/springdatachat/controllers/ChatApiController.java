@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.kamilmarnik.springdatachat.domain.Post;
 import pl.kamilmarnik.springdatachat.domain.User;
 import pl.kamilmarnik.springdatachat.services.PostService;
 import pl.kamilmarnik.springdatachat.services.UserService;
@@ -54,5 +55,11 @@ public class ChatApiController {
     public String getPosts(Model model){
         model.addAttribute("posts", postService.getPosts());
         return "posts";
+    }
+
+    @RequestMapping(value = "/post/new")
+    public String newPost(Model model) {
+        model.addAttribute("post", new Post());
+        return "post";
     }
 }
